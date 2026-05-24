@@ -1,178 +1,123 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>কমিটি সদস্য নিবন্ধন ফর্ম</title>
-  document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    const name = this.from_name.value;
-    const session = this.session.value;
-    const institute = this.institute.value;
-    const address = this.address.value;
-    const title = this.title.value;
-    const phone = this.phone.value;
-    
-    const message = `*কমিটি সদস্য ডেটা*%0A%0A*নাম:* ${name}%0A*Session:* ${session}%0A*Institute:* ${institute}%0A*ঠিকানা:* ${address}%0A*পদবী:* ${title}%0A*মোবাইল:* ${phone}`;
-    
-    const whatsappNumber = "8801540034500";
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
-    
-    window.open(whatsappURL, '_blank');
-    
-    document.getElementById('form-message').innerHTML = '<div style="color: green; background: #d4edda; padding: 10px; border-radius: 5px;">✅ WhatsApp এ রিডাইরেক্ট হচ্ছে... Send বাটনে ট্যাপ করুন</div>';
-    
-    this.reset();
-});
-  <style>
-    body { 
-      font-family: 'SolaimanLipi', 'Nirmala UI', Arial, sans-serif; 
-      background: #f0f2f5; 
-      padding: 15px; 
-      margin: 0;
-    }
-    .container { 
-      max-width: 500px; 
-      margin: 20px auto; 
-      background: white; 
-      padding: 25px; 
-      border-radius: 12px; 
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
-    }
-    h2 { 
-      text-align: center; 
-      color: #1a5fb4; 
-      margin-bottom: 25px; 
-      font-size: 24px;
-    }
-    label { 
-      font-weight: 600; 
-      color: #333; 
-      display: block; 
-      margin-top: 12px;
-      margin-bottom: 5px; 
-    }
-    input, select { 
-      width: 100%; 
-      padding: 12px; 
-      margin-bottom: 8px; 
-      border: 2px solid #ddd; 
-      border-radius: 6px; 
-      box-sizing: border-box; 
-      font-size: 16px;
-    }
-    button { 
-      width: 100%; 
-      padding: 14px; 
-      background: #1a5fb4; 
-      color: white; 
-      border: none; 
-      border-radius: 6px; 
-      font-size: 18px; 
-      font-weight: bold;
-      cursor: pointer; 
-      margin-top: 15px; 
-    }
-    button:disabled { background: #6c757d; }
-    #msg { 
-      text-align: center; 
-      margin-top: 20px; 
-      font-weight: bold; 
-      font-size: 16px;
-      padding: 10px;
-      border-radius: 6px;
-    }
-    .success { color: #0a3622; background: #d1e7dd; }
-    .error { color: #58151c; background: #f8d7da; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কমিটি সদস্য নিবন্ধন ফর্ম</title>
+    <style>
+        body {
+            font-family: 'SolaimanLipi', 'Nirmala UI', Arial, sans-serif;
+            background: #f0f2f5;
+            padding: 15px;
+            margin: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #444;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        #form-message {
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h2>কমিটি সদস্য নিবন্ধন</h2>
-    <form id="nurse-form">
-      <label>নাম *</label>
-      <input type="text" name="from_name" placeholder="আপনার নাম লিখুন" required>
-      
-      <label>Session / শিক্ষাবর্ষ *</label>
-      <input type="text" name="session" placeholder="যেমন: 2021-22" required>
-      
-      <label>Institute Name / ইনস্টিটিউটের নাম *</label>
-      <input type="text" name="institute" placeholder="আপনার ইনস্টিটিউটের নাম" required>
-      
-      <label>বর্তমান ঠিকানা *</label>
-      <input type="text" name="address" placeholder="বর্তমান ঠিকানা লিখুন" required>
-      
-      <label>পদবী / Title *</label>
-      <select name="title" required>
-        <option value="">-- পদবী সিলেক্ট করুন --</option>
-        <option value="সভাপতি">সভাপতি</option>
-        <option value="সহ-সভাপতি">সহ-সভাপতি</option>
-        <option value="সাধারণ সম্পাদক">সাধারণ সম্পাদক</option>
-        <option value="সহ-সাধারণ সম্পাদক">সহ-সাধারণ সম্পাদক</option>
-        <option value="এক্সটার্নাল কো-অর্ডিনেটর">এক্সটার্নাল কো-অর্ডিনেটর</option>
-        <option value="সাংগঠনিক সম্পাদক">সাংগঠনিক সম্পাদক</option>
-        <option value="সহ-সাংগঠনিক সম্পাদক">সহ-সাংগঠনিক সম্পাদক</option>
-        <option value="প্রধান কার্যনির্বাহী">প্রধান কার্যনির্বাহী</option>
-        <option value="সহকারী কার্যনির্বাহী">সহকারী কার্যনির্বাহী</option>
-        <option value="কার্যনির্বাহী সদস্য">কার্যনির্বাহী সদস্য</option>
-        <option value="সাধারণ সদস্য">সাধারণ সদস্য</option>
-      </select>
-      
-      <label>মোবাইল নম্বর *</label>
-      <input type="tel" name="phone" placeholder="01XXXXXXXXX" required>
-      
-      <button type="submit" id="submit-btn">আবেদন সাবমিট করুন</button>
-    </form>
-    <script>
+    <div class="container">
+        <h2>কমিটি সদস্য নিবন্ধন ফর্ম</h2>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="from_name">আপনার নাম:</label>
+                <input type="text" id="from_name" name="from_name" required>
+            </div>
+            <div class="form-group">
+                <label for="session">Session:</label>
+                <input type="text" id="session" name="session" placeholder="যেমন: 2020-21" required>
+            </div>
+            <div class="form-group">
+                <label for="institute">Institute:</label>
+                <input type="text" id="institute" name="institute" required>
+            </div>
+            <div class="form-group">
+                <label for="address">ঠিকানা:</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="title">পদবী:</label>
+                <input type="text" id="title" name="title" placeholder="যেমন: সভাপতি, সম্পাদক" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">মোবাইল নম্বর:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <button type="submit">আবেদন সাবমিট করুন</button>
+        </form>
+        
+        <div id="form-message"></div>
+    </div>
+
+<script>
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
+    
     const name = this.from_name.value;
     const session = this.session.value;
     const institute = this.institute.value;
     const address = this.address.value;
     const title = this.title.value;
     const phone = this.phone.value;
+    
     const message = `*কমিটি সদস্য ডেটা*%0A%0A*নাম:* ${name}%0A*Session:* ${session}%0A*Institute:* ${institute}%0A*ঠিকানা:* ${address}%0A*পদবী:* ${title}%0A*মোবাইল:* ${phone}`;
+    
     const whatsappNumber = "8801540034500";
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+    
     window.open(whatsappURL, '_blank');
+    
     document.getElementById('form-message').innerHTML = '<div style="color: green; background: #d4edda; padding: 10px; border-radius: 5px;">✅ WhatsApp এ রিডাইরেক্ট হচ্ছে... Send বাটনে ট্যাপ করুন</div>';
+    
     this.reset();
 });
-                                                         </script>
-    <p id="msg"></p>
-  </div>
+</script>
 
-  <script type="text/javascript">
-    (function() {
-      emailjs.init("4EASsKmAXTwKXZzrZmFIC");
-    })();
-
-    document.getElementById('nurse-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      const btn = document.getElementById('submit-btn');
-      const msg = document.getElementById('msg');
-      btn.disabled = true;
-      btn.textContent = 'পাঠানো হচ্ছে...';
-      msg.textContent = '';
-      msg.className = '';
-
-      emailjs.sendForm('service_12y80pn', 'template_raxe4nf', this)
-        .then(function() {
-          msg.className = 'success';
-          msg.textContent = 'আপনার আবেদন সফলভাবে পাঠানো হয়েছে!';
-          document.getElementById('nurse-form').reset();
-        }, function(error) {
-          msg.className = 'error';
-          msg.textContent = 'দুঃখিত! পাঠানো যায়নি। আবার চেষ্টা করুন।';
-        })
-        .finally(function() {
-          btn.disabled = false;
-          btn.textContent = 'আবেদন সাবমিট করুন';
-        });
-    });
-  </script>  
 </body>
 </html>
