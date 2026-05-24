@@ -1,29 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nursing Registration</title>
+  <title>কমিটি সদস্য নিবন্ধন ফর্ম</title>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
-    body { font-family: Arial, sans-serif; background: #f0f2f5; padding: 20px; }
-    .container { max-width: 400px; margin: auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    h2 { text-align: center; color: #333; }
-    input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
-    button { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+    body { 
+      font-family: 'SolaimanLipi', 'Nirmala UI', Arial, sans-serif; 
+      background: #f0f2f5; 
+      padding: 15px; 
+      margin: 0;
+    }
+    .container { 
+      max-width: 500px; 
+      margin: 20px auto; 
+      background: white; 
+      padding: 25px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+    }
+    h2 { 
+      text-align: center; 
+      color: #1a5fb4; 
+      margin-bottom: 25px; 
+      font-size: 24px;
+    }
+    label { 
+      font-weight: 600; 
+      color: #333; 
+      display: block; 
+      margin-top: 12px;
+      margin-bottom: 5px; 
+    }
+    input, select { 
+      width: 100%; 
+      padding: 12px; 
+      margin-bottom: 8px; 
+      border: 2px solid #ddd; 
+      border-radius: 6px; 
+      box-sizing: border-box; 
+      font-size: 16px;
+    }
+    button { 
+      width: 100%; 
+      padding: 14px; 
+      background: #1a5fb4; 
+      color: white; 
+      border: none; 
+      border-radius: 6px; 
+      font-size: 18px; 
+      font-weight: bold;
+      cursor: pointer; 
+      margin-top: 15px; 
+    }
     button:disabled { background: #6c757d; }
-    #msg { text-align: center; margin-top: 15px; font-weight: bold; }
+    #msg { 
+      text-align: center; 
+      margin-top: 20px; 
+      font-weight: bold; 
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 6px;
+    }
+    .success { color: #0a3622; background: #d1e7dd; }
+    .error { color: #58151c; background: #f8d7da; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Nursing Registration</h2>
+    <h2>কমিটি সদস্য নিবন্ধন</h2>
     <form id="nurse-form">
-      <input type="text" name="from_name" placeholder="Full Name" required>
-      <input type="text" name="hospital" placeholder="Hospital Name" required>
-      <input type="text" name="ward" placeholder="Ward / Department" required>
-      <input type="tel" name="phone" placeholder="Phone Number" required>
-      <button type="submit" id="submit-btn">Submit</button>
+      <label>নাম *</label>
+      <input type="text" name="from_name" placeholder="আপনার নাম লিখুন" required>
+      
+      <label>Session / শিক্ষাবর্ষ *</label>
+      <input type="text" name="session" placeholder="যেমন: 2021-22" required>
+      
+      <label>Institute Name / ইনস্টিটিউটের নাম *</label>
+      <input type="text" name="institute" placeholder="আপনার ইনস্টিটিউটের নাম" required>
+      
+      <label>বর্তমান ঠিকানা *</label>
+      <input type="text" name="address" placeholder="বর্তমান ঠিকানা লিখুন" required>
+      
+      <label>পদবী / Title *</label>
+      <select name="title" required>
+        <option value="">-- পদবী সিলেক্ট করুন --</option>
+        <option value="সভাপতি">সভাপতি</option>
+        <option value="সহ-সভাপতি">সহ-সভাপতি</option>
+        <option value="সাধারণ সম্পাদক">সাধারণ সম্পাদক</option>
+        <option value="সহ-সাধারণ সম্পাদক">সহ-সাধারণ সম্পাদক</option>
+        <option value="এক্সটার্নাল কো-অর্ডিনেটর">এক্সটার্নাল কো-অর্ডিনেটর</option>
+        <option value="সাংগঠনিক সম্পাদক">সাংগঠনিক সম্পাদক</option>
+        <option value="সহ-সাংগঠনিক সম্পাদক">সহ-সাংগঠনিক সম্পাদক</option>
+        <option value="প্রধান কার্যনির্বাহী">প্রধান কার্যনির্বাহী</option>
+        <option value="সহকারী কার্যনির্বাহী">সহকারী কার্যনির্বাহী</option>
+        <option value="কার্যনির্বাহী সদস্য">কার্যনির্বাহী সদস্য</option>
+        <option value="সাধারণ সদস্য">সাধারণ সদস্য</option>
+      </select>
+      
+      <label>মোবাইল নম্বর *</label>
+      <input type="tel" name="phone" placeholder="01XXXXXXXXX" required>
+      
+      <button type="submit" id="submit-btn">আবেদন সাবমিট করুন</button>
     </form>
     <p id="msg"></p>
   </div>
@@ -39,23 +118,24 @@
       const btn = document.getElementById('submit-btn');
       const msg = document.getElementById('msg');
       btn.disabled = true;
-      btn.textContent = 'Sending...';
+      btn.textContent = 'পাঠানো হচ্ছে...';
       msg.textContent = '';
+      msg.className = '';
 
       emailjs.sendForm('service_12y80pn', 'template_raxe4nf', this)
         .then(function() {
-          msg.style.color = 'green';
-          msg.textContent = 'Registration sent successfully!';
+          msg.className = 'success';
+          msg.textContent = 'আপনার আবেদন সফলভাবে পাঠানো হয়েছে!';
           document.getElementById('nurse-form').reset();
         }, function(error) {
-          msg.style.color = 'red';
-          msg.textContent = 'Failed to send. Try again.';
+          msg.className = 'error';
+          msg.textContent = 'দুঃখিত! পাঠানো যায়নি। আবার চেষ্টা করুন।';
         })
         .finally(function() {
           btn.disabled = false;
-          btn.textContent = 'Submit';
+          btn.textContent = 'আবেদন সাবমিট করুন';
         });
     });
   </script>
 </body>
-  </html>
+</html>
