@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nursing Registration</title>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f2f5; padding: 20px; }
+    .container { max-width: 400px; margin: auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    h2 { text-align: center; color: #333; }
+    input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+    button { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+    button:disabled { background: #6c757d; }
+    #msg { text-align: center; margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Nursing Registration</h2>
+    <form id="nurse-form">
+      <input type="text" name="from_name" placeholder="Full Name" required>
+      <input type="text" name="hospital" placeholder="Hospital Name" required>
+      <input type="text" name="ward" placeholder="Ward / Department" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <button type="submit" id="submit-btn">Submit</button>
+    </form>
+    <p id="msg"></p>
+  </div>
+
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("4EASsKmAXTwKXZzrZmFIC");
+    })();
+
+    document.getElementById('nurse-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const btn = document.getElementById('submit-btn');
+      const msg = document.getElementById('msg');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      msg.textContent = '';
+
+      emailjs.sendForm('service_12y80pn', 'template_raxe4nf', this)
+        .then(function() {
+          msg.style.color = 'green';
+          msg.textContent = 'Registration sent successfully!';
+          document.getElementById('nurse-form').reset();
+        }, function(error) {
+          msg.style.color = 'red';
+          msg.textContent = 'Failed to send. Try again.';
+        })
+        .finally(function() {
+          btn.disabled = false;
+          btn.textContent = 'Submit';
+        });
+    });
+  </script>
+</body>
+  </html>
